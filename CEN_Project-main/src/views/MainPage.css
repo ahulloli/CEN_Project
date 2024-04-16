@@ -1,0 +1,53 @@
+  .maintitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .mainline{
+    border:1px black solid;   
+  }
+  .mainlogo{
+    display: flex;
+  }
+  .search input[type=text]{
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+  }
+  
+  .belowtitle{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+  }
+  
+  .mainsearchtitle{
+    display: flex;
+    font-family: Helvetica;
+    font-size: 25px;
+    margin-top: 20px;
+  }
+  .empty{
+    flex: 1;
+  }
+  .searchtext{
+    width: 625px;
+    text-align:left;
+    font-family: Helvetica;
+  }
+  .search {
+    display: flex;
+    z-index: 5;
+    justify-content: center;
+    font-family: Helvetica;
+    font-size: 35px;
+    margin-top: 10px; 
+    width: 625px;
+    height: 65px;
+  }
+    .searchinput{
+      flex:1;
+      font-size: 20px;
+    }

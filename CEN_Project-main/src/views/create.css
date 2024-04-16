@@ -1,0 +1,157 @@
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .titletext {
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 50px;
+    -webkit-tenxt-fill-color: transparent;
+    -webkit-text-stroke-color: blue;
+    -webkit-text-stroke-width: 4px;
+  }
+
+  .line{
+    border: 1px solid black;
+  }
+  .recentbelowtitle {
+    display:flex;
+    justify-content: space-around;
+  }
+  
+  .left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .subtitles {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px; 
+  }
+  
+  .recipetitle,
+  .cookingtitle {
+    flex: 1;
+    text-align: center;
+    font-size: 30px;
+    font-family: Helvetica;
+    font-weight: bold;
+  }
+
+  .searchbar {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+
+  .searchbar input[type=text] {
+    width: auto;
+    font-size: 20px;
+    
+  }
+
+  .ingredients{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px; /* Adjust as needed */
+  }
+
+  .titlesearch{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ingredienttitle {
+    flex: 1;
+    text-align: center;
+    font-size: 30px;
+    font-family: Helvetica;
+    font-weight: bold;
+  }
+
+  .ingredients input[type=text] {
+    width: auto; /* Adjust width as needed */
+    padding: 20px; /* Adjust padding as needed */
+    font-size: 20px;
+    margin-top: 25px;
+    
+  }
+  .addingredient{
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
+    font-family: Helvetica;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+
+  .preparationtitle{
+    flex: 1;
+    text-align: center;
+    font-size: 30px;
+    font-family: Helvetica;
+    margin-top: 25px;
+    font-weight: bold;
+  }
+
+  .preparation input[type=text] {
+    width: auto; /* Adjust width as needed */
+    padding: 20px; /* Adjust padding as needed */
+    font-size: 20px;
+    margin-top: 25px;
+    
+  }
+
+  .addmethod{
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
+    font-family: Helvetica;
+    margin-top: 15px;
+  }
+
+  .addbutton {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .cooking{
+    flex:1;
+  }
+  .submit{
+    flex:1;
+    margin-top: 20px;
+  }
+  .recipesubmit{
+      background-color: blue;
+      border: none;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin-top: 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      cursor: pointer;
+  }

@@ -1,0 +1,25 @@
+.navbar {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Center align items horizontally */
+    background-color: blue; /* Set background color of the navbar */
+    height: 60px;
+  }
+  
+  
+  .navbar-item {
+    margin: 10px 30px; /* Add some space between menu items */
+    font-size: 25px;
+  }
+  
+  .navbar-item:last-child {
+    margin-right: 40px; /* Remove margin from the last menu item */
+  }
+  
+  .navbar-item a {
+    color: #fff; /* Set text color */
+    text-decoration: none; /* Remove underline from links */
+  }
+  
+  .navbar-item a:hover {
+    background-color: #0056b3; 
+  }

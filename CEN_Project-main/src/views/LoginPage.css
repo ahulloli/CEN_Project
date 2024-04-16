@@ -1,0 +1,48 @@
+ 
+.welcome-heading {
+    margin-top: 10px;
+    font-size: 50px;
+    font-family: Helvetica;
+}
+.login-description {
+    font-size: 30px;
+    font-family: Helvetica;
+    z-index: 5;
+}
+.email-pass{
+    font-size: 20px;
+    font-family: Helvetica;
+    z-index: 5;
+}
+/*
+.bg-image{
+    background-image: url('../assets/food.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+*/
+.hat-1 {
+    position: absolute;
+    top: 50px;
+    left: 300px; 
+    width: 200px;
+    height: auto; 
+    z-index: 999; 
+  }
+  .hat-2 {
+    position: absolute;
+    top: 50px;
+    left: 1020px; 
+    width: 200px;
+    height: auto; 
+    z-index: 999; 
+  }
+  .logo {
+    position: absolute;
+    top: 10px;
+    left: 520px; 
+    width: 500px;
+    height: auto; 
+    z-index: 999; 
+  }
