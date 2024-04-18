@@ -3,6 +3,7 @@ import "./create.css";
 import { useState } from "react";
 import { db } from "../firebase/config.js";
 import { collection, addDoc } from "firebase/firestore";
+import recipelogo from "../assets/recipelogo.png";
 
 function Create() {
   //Submitting a recipe
@@ -35,7 +36,7 @@ function Create() {
     <div>
       <NavBar />
       <div className="title">
-        <h1 className="titletext">Recipe Creation</h1>
+        <img src={recipelogo} className="recipelogo" />
       </div>
       <div className="line"></div>
 
@@ -121,5 +122,5 @@ function Create() {
       </div>
     </div>
   );
-};
-export default Create
+}
+export default Create;
