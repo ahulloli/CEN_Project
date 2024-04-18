@@ -9,7 +9,9 @@ function Create() {
   //Submitting a recipe
   const [newRecipeTitle, setRecipeTitle] = useState("");
   const [newIngredients, setIngredients] = useState("");
+  const [newIngredients2, setIngredients2] = useState("");
   const [newMethods, setMethods] = useState("");
+  const [newMethods2, setMethods2] = useState("");
   const [newCooking, setCooking] = useState("");
 
   const recipeCollectionRef = collection(db, "Recipes");
@@ -19,13 +21,17 @@ function Create() {
       await addDoc(recipeCollectionRef, {
         Title: newRecipeTitle,
         Ingredients: newIngredients,
+        Ingredients2: newIngredients2,
         Method: newMethods,
+        Method2: newMethods2,
         Cooking: newCooking,
       });
 
       setCooking("");
       setIngredients("");
+      setIngredients2("");
       setMethods("");
+      setMethods2("");
       setRecipeTitle("");
     } catch (err) {
       console.log(err);
@@ -70,6 +76,8 @@ function Create() {
                 type="text"
                 placeholder="Ingredient..."
                 classname="Ingredientbar"
+                value={newIngredients2}
+                onChange={(e) => setIngredients2(e.target.value)}
               />
               <div className="addingredient">Add Ingredient</div>
               <button className="addbutton">+</button>
@@ -90,6 +98,8 @@ function Create() {
                 type="text"
                 placeholder="Preparation..."
                 classname="Preparationbar"
+                value={newMethods2}
+                onChange={(e) => setMethods2(e.target.value)}
               />
               <div className="addmethod">Add Method</div>
               <button className="addbutton">+</button>

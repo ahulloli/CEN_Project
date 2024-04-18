@@ -92,8 +92,10 @@ export const Profile = () => {
               {display && (
                 <div className="display">
                   <div>{recipe.Cooking}</div>
-                  <div>{recipe.Method}</div>
                   <div>{recipe.Ingredients}</div>
+                  <div>{recipe.Ingredients2}</div>
+                  <div>{recipe.Method}</div>
+                  <div>{recipe.Method2}</div>
                 </div>
               )}
             </div>
