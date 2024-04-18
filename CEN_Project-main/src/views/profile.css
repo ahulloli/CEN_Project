@@ -1,99 +1,107 @@
 .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5px;/* Add some space below the main title */
-  }
-  
-  .titletext {
-    font-family: 'Balsamiq Sans', cursive;
-    font-size: 50px;
-    -webkit-tenxt-fill-color: transparent;
-    -webkit-text-stroke-color: blue;
-    -webkit-text-stroke-width: 4px;
-  }
-  .line{
-    border: 1px solid black;
-  }
-  .profileinfo{
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top: 15px;
-  }
-  .email{
-    flex:1;
-    text-align: center;
-    font-size:35px;
-    font-family: Helvetica;
-    font-weight: bold;
-  }
-  .edit{
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .editbtn{
-    background-color: blue;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    margin-top: 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-  
-  .signout{
-    flex:1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .signoutbtn{
-    background-color: blue;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    margin-top: 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-  .recent{
-    display: flex; 
-    justify-content: space-between;
-    align-items: right;
-    font-family: Helvetica;
-    font-size: 35px;
-    margin-top: 40px; 
-    text-align:right;
-  }
-  .recenttitle{
-    flex: 1;
-    text-align:right;
-  }
-  .recentrecipes{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Helvetica;
-    font-size: 35px;
-    margin-top: 60px;
-  }
-  .recipe{
-    flex:1;
-    text-align: center;
-  }
-  
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px; /* Add some space below the main title */
+}
+
+.titletext {
+  font-family: "Balsamiq Sans", cursive;
+  font-size: 50px;
+  -webkit-tenxt-fill-color: transparent;
+  -webkit-text-stroke-color: blue;
+  -webkit-text-stroke-width: 4px;
+}
+.line {
+  border: 1px solid black;
+}
+.profileinfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+.email {
+  flex: 1;
+  text-align: center;
+  font-size: 35px;
+  font-family: Helvetica;
+  font-weight: bold;
+}
+.edit {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.displayrecipe {
+  flex: 0 1 1;
+
+  background-color: blue;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 175px;
+  height: 75px;
+}
+
+.signout {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signoutbtn {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.recent {
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  font-family: Helvetica;
+  font-size: 35px;
+  margin-top: 40px;
+  text-align: right;
+}
+.recenttitle {
+  flex: 1;
+  text-align: right;
+}
+.recentrecipes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Helvetica;
+  font-size: 35px;
+  margin-top: 60px;
+}
+.recipe {
+  flex: 1;
+  text-align: center;
+}
+.recents {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.display {
+  flex: 1;
+}
