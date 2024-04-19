@@ -79,11 +79,13 @@ export const Profile = () => {
         </div>
       </div>
 
-      <div className="recent">
-        <div className="recenttitle">Recent Recipes:</div>
-        <div className="empty"></div>
-        <div className="empty"></div>
-      </div>
+      {!display && (
+        <div className="recent">
+          <div className="recenttitle">Recent Recipes:</div>
+          <div className="empty"></div>
+          <div className="empty"></div>
+        </div>
+      )}
       <div>
         {recipeList.map((recipe) => (
           <div className="recentrecipes">
@@ -92,6 +94,7 @@ export const Profile = () => {
               {display && (
                 <div className="display">
                   <div>{recipe.Cooking}</div>
+
                   <div>{recipe.Ingredients}</div>
                   <div>{recipe.Ingredients2}</div>
                   <div>{recipe.Method}</div>
@@ -99,7 +102,7 @@ export const Profile = () => {
                 </div>
               )}
             </div>
-            <div className="empty"></div>
+            {!display && <div className="empty"></div>}
           </div>
         ))}
       </div>
