@@ -8,41 +8,54 @@ import recipelogo from "../assets/recipelogo.png";
 function Create() {
   //Submitting a recipe
   const [newRecipeTitle, setRecipeTitle] = useState("");
-  const [newIngredients, setIngredients] = useState("");
-  const [newIngredients2, setIngredients2] = useState("");
-  const [newMethods, setMethods] = useState("");
-  const [newMethods2, setMethods2] = useState("");
+  const [newIngredients, setIngredients] = useState([]);
+  const [newMethods, setMethods] = useState([]);
   const [newCooking, setCooking] = useState("");
-
   const recipeCollectionRef = collection(db, "Recipes");
-
-  const onSubmitRecipe = async () => {
+  const onSubmitRecipe = async () => { //function handles submission of recipe to firestore
     try {
       await addDoc(recipeCollectionRef, {
         Title: newRecipeTitle,
         Ingredients: newIngredients,
-        Ingredients2: newIngredients2,
         Method: newMethods,
-        Method2: newMethods2,
         Cooking: newCooking,
       });
-
       setCooking("");
-      setIngredients("");
-      setIngredients2("");
-      setMethods("");
-      setMethods2("");
+      setIngredients([]);
+      setMethods([]);
       setRecipeTitle("");
     } catch (err) {
       console.log(err);
     }
   };
 
+  //handlers added to allow for more than two ingredients and handlers
+  const handleNewIngredient = () => {
+    setIngredients([...newIngredients, ""]);
+  };
+
+  const handleIngredientChange = (index, value) => {
+    const newIngredientsArray = [...newIngredients]; //uses an array so multiple values can be stored
+    newIngredientsArray[index] = value;
+    setIngredients(newIngredientsArray);
+  };
+
+  const handleNewMethod = () => {
+    setMethods([...newMethods, ""]);
+  };
+
+  const handleMethodChange = (index, value) => {
+    const newMethodsArray = [...newMethods]; //uses an array so multiple values can be stored
+    newMethodsArray[index] = value;
+    setMethods(newMethodsArray);
+  };
+
+  //render function
   return (
     <div>
       <NavBar />
       <div className="title">
-        <img src={recipelogo} className="recipelogo" />
+        <img src={recipelogo} className="recipelogo" alt="recipelogo" />
       </div>
       <div className="line"></div>
 
@@ -56,7 +69,7 @@ function Create() {
             <input
               type="text"
               placeholder="Name..."
-              classname="recipebar"
+              className="recipebar"
               value={newRecipeTitle}
               onChange={(e) => setRecipeTitle(e.target.value)}
             />
@@ -65,44 +78,34 @@ function Create() {
           <div className="ingredients">
             <div className="titlesearch">
               <div className="ingredienttitle">Ingredients:</div>
-              <input
-                type="text"
-                placeholder="Ingredient..."
-                classname="Ingredientbar"
-                value={newIngredients}
-                onChange={(e) => setIngredients(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Ingredient..."
-                classname="Ingredientbar"
-                value={newIngredients2}
-                onChange={(e) => setIngredients2(e.target.value)}
-              />
-              <div className="addingredient">Add Ingredient</div>
-              <button className="addbutton">+</button>
+              {newIngredients.map((ingredient, ingredientNumber) => (
+                <input
+                  key={ingredientNumber}
+                  type="text"
+                  placeholder="Enter Ingredient"
+                  className="Ingredientbar"
+                  value={ingredient}
+                  onChange={(e) => handleIngredientChange(ingredientNumber, e.target.value)}
+                />
+              ))}
+              <button className="addbutton" onClick={handleNewIngredient}>+</button>
             </div>
           </div>
 
           <div className="preparation">
             <div className="titlesearch">
               <div className="preparationtitle">Preparation: </div>
-              <input
-                type="text"
-                placeholder="Preparation..."
-                classname="Preparationbar"
-                value={newMethods}
-                onChange={(e) => setMethods(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Preparation..."
-                classname="Preparationbar"
-                value={newMethods2}
-                onChange={(e) => setMethods2(e.target.value)}
-              />
-              <div className="addmethod">Add Method</div>
-              <button className="addbutton">+</button>
+              {newMethods.map((method, prepNumber) => (
+                <input
+                  key={prepNumber}
+                  type="text"
+                  placeholder="Enter Preparation"
+                  className="Preparationbar"
+                  value={method}
+                  onChange={(e) => handleMethodChange(prepNumber, e.target.value)}
+                />
+              ))}
+              <button className="addbutton" onClick={handleNewMethod}>+</button>
             </div>
           </div>
         </div>
@@ -116,21 +119,21 @@ function Create() {
               <input
                 type="text"
                 placeholder="Cooking..."
-                classname="cookingbar"
+                className="cookingbar"
                 value={newCooking}
                 onChange={(e) => setCooking(e.target.value)}
               />
             </div>
-          </div>
-
-          <div className="submit">
+            <div className="submit" style={{ marginLeft: '55px' }}>
             <button onClick={onSubmitRecipe} className="recipesubmit">
               Submit Recipe
             </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
+
 export default Create;
