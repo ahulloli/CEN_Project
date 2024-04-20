@@ -7,6 +7,8 @@ import {
 } from "firebase/auth";
 import './LoginPage.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import logo from "../assets/logo.png";
+import "./MainPage.css";
 
 
 
@@ -66,11 +68,12 @@ function LoginPage({ onLogin }) {
         <div className="login-page">
         
           <section>
-          <img src="src\assets\logo.png" alt="Hat" className="logo"/>
+          <div className="maintitle">
+            <img src={logo} alt="Hat" className="mainlogo" />
+          </div>
+
           <br />
-          <br />
-          <br />
-          <br />
+          
             <p className="login-description">Login or create an account to continue</p>
             <div className="login-type">
               <button 

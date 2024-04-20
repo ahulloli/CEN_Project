@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import logo from "../assets/logo.png";
 
+// Function to retrieve data from Firestore and export to JSON
+
 function MainPage() {
   const [query, setQuery] = useState('');
   const [recipes, setRecipes] = useState([]);
@@ -13,6 +15,10 @@ function MainPage() {
     const index = searchClient.initIndex('User recipe search');
 
     const getRecipes = async () => {
+      if (query.trim() === '') {
+        setRecipes([]); // Clear recipes if search query is empty
+        return;
+      }
       const { hits } = await index.search(query);
       setRecipes(hits);
     };
@@ -29,7 +35,7 @@ function MainPage() {
       </div>
 
       <div className="mainsearchtitle">
-        <div className="empty"></div>
+        <div className="empty"></div> 
         <div className="searchtext">Search</div>
         <div className="empty"></div>
       </div>
@@ -39,7 +45,7 @@ function MainPage() {
         <input type="text" placeholder="Search..." value = {query} onChange={(e) => setQuery(e.target.value)}/>
         </div>
       </div>
-      <div className="recipe-results">
+      <div className="recipe-results" style={{ marginLeft: '150px' }}>
         <ul>
           {recipes.map(recipe => (
             <li key={recipe.objectID}>

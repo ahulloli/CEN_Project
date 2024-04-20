@@ -1,52 +1,65 @@
+
 import { NavBar } from "../components/Navbar";
 import "./create.css";
 import { useState } from "react";
 import { db } from "../firebase/config.js";
 import { collection, addDoc } from "firebase/firestore";
 import recipelogo from "../assets/recipelogo.png";
-import algoliasearch from 'algoliasearch/lite';
+import algoliasearch from 'algoliasearch';
 
 const recipeCollectionRef = collection(db, "Recipes");
-const searchClient = algoliasearch('SRWABPRYT8', '81fab4560b2871b0f748495bfe193b99'); //api key
-const index = searchClient.initIndex('User recipe search');
-
 
 
 function Create() {
   //Submitting a recipe
+  const searchClient = algoliasearch('SRWABPRYT8', '81fab4560b2871b0f748495bfe193b99'); //api key
+  const index = searchClient.initIndex('User recipe search');
+
   const [newRecipeTitle, setRecipeTitle] = useState("");
   const [newIngredients, setIngredients] = useState([]);
   const [newMethods, setMethods] = useState([]);
   const [newCooking, setCooking] = useState("");
   const recipeCollectionRef = collection(db, "Recipes");
-  const onSubmitRecipe = async () => { //function handles submission of recipe to firestore
+
+  const objects = [{
+    firstname: 'Jimmie',
+    lastname: 'Barninger',
+    objectID: 'myID1'
+  }, {
+    firstname: 'Warren',
+    lastname: 'Speach',
+    objectID: 'myID2'
+  }];
+
+  const onSubmitRecipe = async () => {
     try {
-      await addDoc(recipeCollectionRef, {
+      const docRef = await addDoc(recipeCollectionRef, {
         Title: newRecipeTitle,
         Ingredients: newIngredients,
         Method: newMethods,
         Cooking: newCooking,
       });
-
+  
       setCooking("");
       setIngredients([]);
       setMethods([]);
       setRecipeTitle("");
-    } catch (err) {
-      console.log(err);
-    }
-    try {
+  
+      // Access the ID of the newly created document
+      const recipeID = docRef.id;
+      // Save the object to Algolia index
       await index.saveObject({
+        objectID: recipeID,
         Title: newRecipeTitle,
-        Ingredients: newIngredients,
-        Method: newMethods,
-        Cooking: newCooking,
+        Ingredients: newIngredients
       });
-    } catch (error) {
-      console.error('Error saving object:', error);
+      
+    // Any other requestOptions
+  }
+    catch (err) {
+      console.error('Error Error:', err);
     }
   };
-
   //handlers added to allow for more than two ingredients and handlers
   const handleNewIngredient = () => {
     setIngredients([...newIngredients, ""]);
