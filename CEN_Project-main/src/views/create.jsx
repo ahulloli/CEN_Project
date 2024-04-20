@@ -4,6 +4,13 @@ import { useState } from "react";
 import { db } from "../firebase/config.js";
 import { collection, addDoc } from "firebase/firestore";
 import recipelogo from "../assets/recipelogo.png";
+import algoliasearch from 'algoliasearch/lite';
+
+const recipeCollectionRef = collection(db, "Recipes");
+const searchClient = algoliasearch('SRWABPRYT8', '81fab4560b2871b0f748495bfe193b99'); //api key
+const index = searchClient.initIndex('User recipe search');
+
+
 
 function Create() {
   //Submitting a recipe
@@ -20,12 +27,23 @@ function Create() {
         Method: newMethods,
         Cooking: newCooking,
       });
+
       setCooking("");
       setIngredients([]);
       setMethods([]);
       setRecipeTitle("");
     } catch (err) {
       console.log(err);
+    }
+    try {
+      await index.saveObject({
+        Title: newRecipeTitle,
+        Ingredients: newIngredients,
+        Method: newMethods,
+        Cooking: newCooking,
+      });
+    } catch (error) {
+      console.error('Error saving object:', error);
     }
   };
 
