@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './views/LoginPage';
 import MainPage from './views/MainPage';
 import CreatePage from './views/create.jsx'
@@ -9,30 +9,26 @@ import { auth } from './firebase/config.js';
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const toMain = auth.onAuthStateChanged(user => {
-      setUser(user);
+  useEffect(() => {  //useEffect hook listens for firebase authentication state change
+    const toMain = auth.onAuthStateChanged((user) => {
+      setUser(user); //makes it so user can be routed to other pages once succesfully logged in
     });
 
     return () => toMain();
   }, []);
 
-  const handleLogin = () => {
-    setUser(auth.currentUser);
-    console.log("handled")
-  };
-
   return (
-      <Router>
-        <Routes>
-          <Route path="/" element={user ? <MainPage /> : <Navigate to="/login" />} />
-          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/create" element={<CreatePage />} />
-          <Route path ="/profile" element={<Profile />} />
-        </Routes>
-      </Router>
-    );
-  }
+    //routing configuration
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/main" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/main" element={user ? <MainPage /> : <Navigate to="/login" />} />
+        <Route path="/create" element={user ? <CreatePage /> : <Navigate to="/login" />} />
+        <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
+      </Routes>
+    </Router>
+  );
+}
 
-export default App
+export default App;
