@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './views/LoginPage';
-import MainPage from './views/MainPage';
+import LoginPage from './views/LoginPage.jsx';
+import MainPage from './views/MainPage.jsx';
 import CreatePage from './views/create.jsx'
 import { Profile } from './views/profile.jsx';
 import { auth } from './firebase/config.js';
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,7 +17,7 @@ function App() {
 
     return () => toMain();
   }, []);
-
+  
   return (
     //routing configuration
     <Router>

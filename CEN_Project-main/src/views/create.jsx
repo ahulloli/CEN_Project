@@ -1,4 +1,3 @@
-
 import { NavBar } from "../components/Navbar";
 import "./create.css";
 import { useState } from "react";
@@ -14,6 +13,11 @@ function Create() {
   //Submitting a recipe
   const searchClient = algoliasearch('SRWABPRYT8', '81fab4560b2871b0f748495bfe193b99'); //api key
   const index = searchClient.initIndex('User recipe search');
+
+  index.setSettings({
+    attributesToIndex: ['Title', 'Ingredients'],
+    attributesForFaceting: ['filterOnly(Method)', 'filterOnly(Cooking)']
+  });
 
   const [newRecipeTitle, setRecipeTitle] = useState("");
   const [newIngredients, setIngredients] = useState([]);
@@ -51,7 +55,9 @@ function Create() {
       await index.saveObject({
         objectID: recipeID,
         Title: newRecipeTitle,
-        Ingredients: newIngredients
+        Ingredients: newIngredients,
+        Method: newMethods,
+        Cooking: newCooking,
       });
       
     // Any other requestOptions

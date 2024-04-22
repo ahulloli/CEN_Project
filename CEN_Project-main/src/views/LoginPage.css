@@ -1,4 +1,4 @@
- 
+
 .welcome-heading {
     margin-top: 10px;
     font-size: 50px;
@@ -14,7 +14,7 @@
     font-family: Helvetica;
     z-index: 5;
 }
-/*
+/* may include in final version
 .bg-image{
     background-image: url('../assets/food.png');
     background-size: cover; 

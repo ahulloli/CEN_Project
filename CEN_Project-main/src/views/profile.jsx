@@ -11,7 +11,7 @@ export const Profile = () => {
   const [loggedout, setLoggedout] = useState(false);
   const [display, setDisplay] = useState(false);
 
-  const logout = async () => {
+  const logout = async () => { //logout function
     try {
       await signOut(auth);
       setLoggedout(true);
@@ -20,11 +20,10 @@ export const Profile = () => {
     }
   };
 
-  const recipeCollectionRef = collection(db, "Recipes");
+  const recipeCollectionRef = collection(db, "Recipes"); //accesses recipes stored in firestore db
   useEffect(() => {
     const getRecipeList = async () => {
-      //Read the date
-      //Set the movie list
+      //function to retrievew recent recipe list
       try {
         const data = await getDocs(recipeCollectionRef);
         const filteredData = data.docs.map((doc) => ({
@@ -38,7 +37,7 @@ export const Profile = () => {
     };
     getRecipeList();
   }, []);
-
+  //navigates back to login if logout button is pressed
   if (loggedout) {
     return <Navigate to="/login" />;
   }
@@ -94,7 +93,6 @@ export const Profile = () => {
               {display && (
                 <div className="display">
                   <div>{recipe.Cooking}</div>
-
                   <div>{recipe.Ingredients}</div>
                   <div>{recipe.Ingredients2}</div>
                   <div>{recipe.Method}</div>

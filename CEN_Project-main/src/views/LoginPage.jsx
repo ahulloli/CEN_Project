@@ -23,7 +23,7 @@ function LoginPage({ onLogin }) {
     setUserCredentials({...userCredentials, [e.target.name]: e.target.value});
     setError('')
   }
-  
+  // handles user sign up
   function handleSignup(e) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
@@ -39,23 +39,24 @@ function LoginPage({ onLogin }) {
       setError(error.message)
       });
   }
-
+  //handles user logged in event 
   function handleLogin(e){
     e.preventDefault();
     setError("");
 
-    signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+    signInWithEmailAndPassword(auth, userCredentials.email, userCredentials.password) //uses firebase module auth
     .then((userCredential) => {
       console.log(userCredential.user);
       setLoggedIn(true);
       onLogin();
     })
+    //catches faulty login attempt and sets error to be displayed in red 
     .catch((error) => {
       setError(error.message)
     });
   }
 
-  
+  //navigates to main upon succesful user login
   if (isLoggedIn) {
     return <Navigate to="/main"/>;
   }
@@ -108,8 +109,6 @@ function LoginPage({ onLogin }) {
                     {error}
                     </div>
                   }
-
-                  <p className="forgot-password">Forgot Password?</p>
               </form>
           </section>
         </div>
